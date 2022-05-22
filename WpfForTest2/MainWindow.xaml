@@ -26,9 +26,13 @@
                 <Button Click="FindUs_Click" MouseEnter="Links_MouseEnter">Как нас найти</Button>
             </MenuItem>
         </Menu>
+        <StackPanel DockPanel.Dock="Bottom" MaxWidth="100">
+            <Slider Minimum="10" Maximum="20" Name="fontSize"></Slider>
+        </StackPanel>
         <StackPanel MaxHeight="50" DockPanel.Dock="Bottom" VerticalAlignment="Bottom" HorizontalAlignment="Stretch">
             <TextBlock x:Name="StateString"></TextBlock>
         </StackPanel>
+        
         <StackPanel DockPanel.Dock="Left" MinWidth="250">
             <Image Source="C:\Users\24122\Desktop\колледж\зачет\рпм\1макет.jpg"></Image>
             <Image Source="C:\Users\24122\Desktop\колледж\зачет\рпм\1макет.jpg"></Image>
@@ -36,7 +40,7 @@
             <Image Source="C:\Users\24122\Desktop\колледж\зачет\рпм\1макет.jpg"></Image>
         </StackPanel>
         <StackPanel DockPanel.Dock="Right" HorizontalAlignment="Center">
-            <TextBlock TextWrapping="Wrap" Margin="10">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lobortis nunc nec tincidunt congue. Curabitur iaculis nunc nec pulvinar consequat. Ut nec finibus felis. Sed nec lacus tortor. Morbi a bibendum nisl. Curabitur egestas lorem vitae vehicula consequat. Phasellus tempor lacus in orci eleifend, id aliquet velit porta. Sed auctor vitae elit pharetra semper. Quisque consequat varius mauris sed sodales. Phasellus eleifend, leo quis fringilla imperdiet, ipsum nunc interdum libero, vel rutrum velit elit tristique lorem. Duis ac odio vitae lacus eleifend elementum ac ac nisi.
+            <TextBlock TextWrapping="Wrap" Margin="10" FontSize="{Binding ElementName=fontSize, Path=Value}">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lobortis nunc nec tincidunt congue. Curabitur iaculis nunc nec pulvinar consequat. Ut nec finibus felis. Sed nec lacus tortor. Morbi a bibendum nisl. Curabitur egestas lorem vitae vehicula consequat. Phasellus tempor lacus in orci eleifend, id aliquet velit porta. Sed auctor vitae elit pharetra semper. Quisque consequat varius mauris sed sodales. Phasellus eleifend, leo quis fringilla imperdiet, ipsum nunc interdum libero, vel rutrum velit elit tristique lorem. Duis ac odio vitae lacus eleifend elementum ac ac nisi.
 Sed mattis tellus diam, in scelerisque odio semper ut. Duis convallis at ipsum id eleifend. Sed laoreet diam non pharetra ultricies. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam arcu elit, placerat a est a, eleifend tincidunt massa. Fusce eros quam, finibus a scelerisque sit amet, ullamcorper dignissim tellus. Fusce rutrum metus sit amet dui varius pretium. Curabitur tristique tempus velit imperdiet euismod. Ut elementum, lacus quis interdum lacinia, enim quam aliquam dui, non convallis ligula mi eget quam. Phasellus faucibus ipsum vel tincidunt consequat. Donec ultrices imperdiet ipsum, a fringilla turpis volutpat ac. Nunc eleifend accumsan lectus blandit condimentum. Fusce id laoreet quam.
             </TextBlock>
         </StackPanel>
