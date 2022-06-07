@@ -23,54 +23,30 @@ namespace WpfForTest2
         public MainWindow()
         {
             InitializeComponent();
-            var styles = new List<string> { "Solid", "Gradient" };
-            styleList.SelectionChanged += ThemeChanged;
-            styleList.ItemsSource = styles;
-            styleList.SelectedItem = "Solid";
-            styleList.MouseEnter += StylesSolid_MouseEnter;
+        }
+        private void MenuItem_MouseEnter(object sender, MouseEventArgs e)
+        {
+            this.StateString.Content = ((MenuItem)sender).Header.ToString();
+        }
+        private void MenuItem_MouseLeave(object sender, MouseEventArgs e)
+        {
+            this.StateString.Content = string.Empty;
         }
 
-        private void ThemeChanged(object sender, SelectionChangedEventArgs e)
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            string? style = styleList.SelectedItem as string;
-            // определяем путь к файлу ресурсов
-            var uri = new Uri(style + ".xaml", UriKind.Relative);
-            // загружаем словарь ресурсов
-            ResourceDictionary? resourceDict = Application.LoadComponent(uri) as ResourceDictionary;
-            // очищаем коллекцию ресурсов приложения
-            Application.Current.Resources.Clear();
-            // добавляем загруженный словарь ресурсов
-            Application.Current.Resources.MergedDictionaries.Add(resourceDict);
+            MessageBox.Show(((MenuItem)sender).Header.ToString()?[1..]);
         }
 
-        private void Service_Click(object sender, RoutedEventArgs e)
+        private void Solid_OnClick(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(@"Каталог товаров");
-        }
-        private void AboutCompany_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show(@"Медицинские статьи");
-        }
-        private void OurWorks_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show(@"Об аптеке");
-        }
-        private void FindUs_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show(@"Как найти нас ");
+            this.DockPanel.Background = new SolidColorBrush(Colors.Red);
         }
 
-        private void Styles_MouseEnter(object sender, MouseEventArgs e)
+        private void Gradient_OnClick(object sender, RoutedEventArgs e)
         {
-            StateString.Text = "Стили приложения";
-        }
-        private void StylesSolid_MouseEnter(object sender, MouseEventArgs e)
-        {
-            StateString.Text = "Варианты заливки";
-        }
-        private void Links_MouseEnter(object sender, MouseEventArgs e)
-        {
-            StateString.Text = "Сслыки";
+            this.DockPanel.Background = new LinearGradientBrush(Colors.Red, Colors.GreenYellow,
+                new Point(0, 0), new Point(1, 1));
         }
     }
 }

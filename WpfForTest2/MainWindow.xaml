@@ -10,39 +10,78 @@
     <Window.Resources>
         <Style TargetType="Image">
             <Setter Property="Width" Value="100"></Setter>
-            <Setter Property="Margin" Value="0,10,0,0"></Setter>
+        </Style>
+        <Style TargetType="Border" x:Key="OuterBorder">
+            <Setter Property="BorderBrush" Value="Black"></Setter>
+            <Setter Property="BorderThickness" Value="1"></Setter>
+            <Setter Property="Margin" Value="5 "></Setter>
+            <Setter Property="Padding" Value="0"></Setter>
+            <Setter Property="VerticalAlignment" Value="Top"></Setter>
+        </Style>
+        <Style TargetType="Border" x:Key="InnerBorder" BasedOn="{StaticResource OuterBorder}">
+            <Setter Property="Margin" Value="5"></Setter>
+            <Setter Property="Padding" Value="3"></Setter>
         </Style>
     </Window.Resources>
-    <DockPanel>
-        <Menu DockPanel.Dock="Top" VerticalAlignment="Top" MaxHeight="50">
-            <MenuItem Header="_Styles" MouseEnter="Styles_MouseEnter">
-                <ListBox x:Name="styleList">
-                </ListBox>
+    <Grid Name="DockPanel">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" MinWidth="140"></ColumnDefinition>
+            <ColumnDefinition Width="4*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"  VerticalAlignment="Top" MaxHeight="50">
+            <MenuItem Header="_Styles" MouseEnter="MenuItem_MouseEnter"
+                      MouseLeave="MenuItem_MouseLeave">
+                <MenuItem Name="Solid" Header="_Solid color" MouseEnter="MenuItem_MouseEnter"
+                          MouseLeave="MenuItem_MouseLeave" Click="Solid_OnClick">
+                </MenuItem>
+                <MenuItem Name="Gradient" Header="_Gradient color" MouseEnter="MenuItem_MouseEnter"
+                          MouseLeave="MenuItem_MouseLeave" Click="Gradient_OnClick">
+                </MenuItem>
             </MenuItem>
-            <MenuItem Header="_Links" Tag="links" MouseEnter="Links_MouseEnter">
-                <Button Click="Service_Click" MouseEnter="Links_MouseEnter">Каталог товаров</Button>
-                <Button Click="AboutCompany_Click" MouseEnter="Links_MouseEnter">Медицинские статьи</Button>
-                <Button Click="OurWorks_Click" MouseEnter="Links_MouseEnter">Об аптеке</Button>
-                <Button Click="FindUs_Click" MouseEnter="Links_MouseEnter">Как нас найти</Button>
+            <MenuItem x:Name="Links" Header="_Links" MouseEnter="MenuItem_MouseEnter"
+                      MouseLeave="MenuItem_MouseLeave">
+                <MenuItem Name="CatalogGoods" Header="_Catalog goods" MouseEnter="MenuItem_MouseEnter"
+                          MouseLeave="MenuItem_MouseLeave" Click="MenuItem_Click">
+                </MenuItem>
+                <MenuItem Name="ServiceCatalog" Header="_Service catalog" MouseEnter="MenuItem_MouseEnter"
+                          MouseLeave="MenuItem_MouseLeave" Click="MenuItem_Click">
+                </MenuItem>
+                <MenuItem Name="AboutUs" Header="_About us" MouseEnter="MenuItem_MouseEnter"
+                          MouseLeave="MenuItem_MouseLeave" Click="MenuItem_Click">
+                </MenuItem>
+                <MenuItem Name="FindUs" Header="_Find us" MouseEnter="MenuItem_MouseEnter"
+                          MouseLeave="MenuItem_MouseLeave" Click="MenuItem_Click">
+                </MenuItem>
             </MenuItem>
         </Menu>
-        <StackPanel DockPanel.Dock="Bottom" MaxWidth="100">
-            <Slider Minimum="10" Maximum="20" Name="fontSize"></Slider>
+        <Border Grid.Row="1" Grid.Column="0" Style="{StaticResource OuterBorder}">
+            <WrapPanel HorizontalAlignment="Center">
+                <Border Style="{StaticResource InnerBorder}">
+                    <Image Source="C:\Users\24122\Desktop\колледж\зачет\рпм\1макет.jpg"></Image>
+                </Border>
+                <Border Style="{StaticResource InnerBorder}">
+                    <Image Source="C:\Users\24122\Desktop\колледж\зачет\рпм\1макет.jpg"></Image>
+                </Border>
+                <Border Style="{StaticResource InnerBorder}">
+                    <Image Source="C:\Users\24122\Desktop\колледж\зачет\рпм\1макет.jpg"></Image>
+                </Border>
+            </WrapPanel>
+        </Border>
+        <Border Grid.Row="1" Grid.Column="1"   Style="{StaticResource OuterBorder}">
+            <WrapPanel HorizontalAlignment="Center">
+                <TextBlock TextWrapping="Wrap" Margin="10">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lobortis nunc nec tincidunt congue. Curabitur iaculis nunc nec pulvinar consequat. Ut nec finibus felis. Sed nec lacus tortor. Morbi a bibendum nisl. Curabitur egestas lorem vitae vehicula consequat. Phasellus tempor lacus in orci eleifend, id aliquet velit porta. Sed auctor vitae elit pharetra semper. Quisque consequat varius mauris sed sodales. Phasellus eleifend, leo quis fringilla imperdiet, ipsum nunc interdum libero, vel rutrum velit elit tristique lorem. Duis ac odio vitae lacus eleifend elementum ac ac nisi.
+                    Sed mattis tellus diam, in scelerisque odio semper ut. Duis convallis at ipsum id eleifend. Sed laoreet diam non pharetra ultricies. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam arcu elit, placerat a est a, eleifend tincidunt massa. Fusce eros quam, finibus a scelerisque sit amet, ullamcorper dignissim tellus. Fusce rutrum metus sit amet dui varius pretium. Curabitur tristique tempus velit imperdiet euismod. Ut elementum, lacus quis interdum lacinia, enim quam aliquam dui, non convallis ligula mi eget quam. Phasellus faucibus ipsum vel tincidunt consequat. Donec ultrices imperdiet ipsum, a fringilla turpis volutpat ac. Nunc eleifend accumsan lectus blandit condimentum. Fusce id laoreet quam.
+                </TextBlock>
+            </WrapPanel>
+        </Border>
+        <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+            <Label x:Name="StateString"></Label>
         </StackPanel>
-        <StackPanel MaxHeight="50" DockPanel.Dock="Bottom" VerticalAlignment="Bottom" HorizontalAlignment="Stretch">
-            <TextBlock x:Name="StateString"></TextBlock>
-        </StackPanel>
-        
-        <StackPanel DockPanel.Dock="Left" MinWidth="250">
-            <Image Source="C:\Users\24122\Desktop\колледж\зачет\рпм\1макет.jpg"></Image>
-            <Image Source="C:\Users\24122\Desktop\колледж\зачет\рпм\1макет.jpg"></Image>
-            <Image Source="C:\Users\24122\Desktop\колледж\зачет\рпм\1макет.jpg"></Image>
-            <Image Source="C:\Users\24122\Desktop\колледж\зачет\рпм\1макет.jpg"></Image>
-        </StackPanel>
-        <StackPanel DockPanel.Dock="Right" HorizontalAlignment="Center">
-            <TextBlock TextWrapping="Wrap" Margin="10" FontSize="{Binding ElementName=fontSize, Path=Value}">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lobortis nunc nec tincidunt congue. Curabitur iaculis nunc nec pulvinar consequat. Ut nec finibus felis. Sed nec lacus tortor. Morbi a bibendum nisl. Curabitur egestas lorem vitae vehicula consequat. Phasellus tempor lacus in orci eleifend, id aliquet velit porta. Sed auctor vitae elit pharetra semper. Quisque consequat varius mauris sed sodales. Phasellus eleifend, leo quis fringilla imperdiet, ipsum nunc interdum libero, vel rutrum velit elit tristique lorem. Duis ac odio vitae lacus eleifend elementum ac ac nisi.
-Sed mattis tellus diam, in scelerisque odio semper ut. Duis convallis at ipsum id eleifend. Sed laoreet diam non pharetra ultricies. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam arcu elit, placerat a est a, eleifend tincidunt massa. Fusce eros quam, finibus a scelerisque sit amet, ullamcorper dignissim tellus. Fusce rutrum metus sit amet dui varius pretium. Curabitur tristique tempus velit imperdiet euismod. Ut elementum, lacus quis interdum lacinia, enim quam aliquam dui, non convallis ligula mi eget quam. Phasellus faucibus ipsum vel tincidunt consequat. Donec ultrices imperdiet ipsum, a fringilla turpis volutpat ac. Nunc eleifend accumsan lectus blandit condimentum. Fusce id laoreet quam.
-            </TextBlock>
-        </StackPanel>
-    </DockPanel>
+    </Grid>
 </Window>
